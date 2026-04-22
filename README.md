@@ -114,37 +114,3 @@ frontend/
 
 data/
   compliance.db
-```
-
-## Limitations
-
-This prototype is intentionally limited.
-
-### Development note on Liquid testnet sync
-
-During development, the local Liquid testnet node connected successfully to peers and began syncing. Wallet creation and testnet address generation were successful, and faucet funding was requested to the generated wallet address.
-
-However, the local node remained in initial block download during the submission window, which limited reliable wallet-side settlement verification on the submission machine. For that reason, the final demo uses a simplified settlement adapter while preserving the core compliance and audit architecture.
-
-This limitation does not change the main contribution of the project, which is the architecture showing how:
-
-- Travel Rule data can be collected off-chain.
-- Compliance records can be linked to settlement references.
-- Auditors can retrieve and verify the relevant record through a controlled workflow.
-
-## Evidence of Liquid integration work
-
-### Elements CLI installed
-![Elements CLI version](docs/screenshots/01-elements-cli-version.png)
-
-### Peer connectivity
-![Peer connectivity](docs/screenshots/02-peers-connected.png)
-
-### Faucet confirmation
-![Faucet confirmation](docs/screenshots/03-faucet-sent-lbtc.png)
-
-### Wallet balance state
-![Wallet balance](docs/screenshots/04-wallet-balance.png)
-
-### Node sync status
-![Sync status](docs/screenshots/05-sync-status-initialblockdownload.png)
