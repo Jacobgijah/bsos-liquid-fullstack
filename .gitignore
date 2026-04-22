@@ -1,0 +1,67 @@
+# dependencies
+node_modules/
+
+# environment files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# database / local data
+data/*.db
+data/*.sqlite
+data/*.sqlite3
+data/compliance.db-*
+
+*.db
+*.sqlite
+*.sqlite3
+
+# logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# runtime / temp
+tmp/
+temp/
+*.tmp
+*.pid
+*.seed
+*.pid.lock
+
+# build output
+dist/
+build/
+coverage/
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# editor / IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# package manager
+package-lock.json
+
+# elements / blockchain local files
+blocks/
+chainstate/
+wallets/
+mempool.dat
+peers.dat
+banlist.json
+fee_estimates.dat
+debug.log
+
+# optional local screenshots or exports you do not want
+*.zip

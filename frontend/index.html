@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BSOS Liquid Settlement Demo</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="hero-card">
+        <div>
+          <p class="eyebrow">Plan ₿ Assignment Demo</p>
+          <h1>BSOS Liquid Private Settlement Portal</h1>
+          <p class="hero-copy">
+            Create a Travel Rule record, send a confidential settlement, and audit the linked on-chain transaction.
+          </p>
+        </div>
+        <div class="status-grid">
+          <div class="status-box">
+            <span class="label">Mode</span>
+            <strong id="app-mode">Loading...</strong>
+          </div>
+          <div class="status-box">
+            <span class="label">Network</span>
+            <strong id="app-network">Loading...</strong>
+          </div>
+          <div class="status-box">
+            <span class="label">Health</span>
+            <strong id="app-health">Checking...</strong>
+          </div>
+        </div>
+      </header>
+
+      <main class="content-grid">
+        <section class="card">
+          <div class="section-header">
+            <h2>Create Travel Rule Record</h2>
+            <p>Simulate the originator and beneficiary data collected off-chain.</p>
+          </div>
+
+          <form id="transfer-form" class="form-grid">
+            <label>
+              <span>Originator name</span>
+              <input type="text" name="originatorName" value="Carlos Silva" required />
+            </label>
+            <label>
+              <span>Originator account</span>
+              <input type="text" name="originatorAccount" value="BRX-1001" required />
+            </label>
+            <label>
+              <span>Beneficiary name</span>
+              <input type="text" name="beneficiaryName" value="Li Wei Trading Co." required />
+            </label>
+            <label>
+              <span>Beneficiary account</span>
+              <input type="text" name="beneficiaryAccount" value="CP-7781" required />
+            </label>
+            <label>
+              <span>Declared amount</span>
+              <input type="text" name="declaredAmount" value="0.00010000" required />
+            </label>
+            <label>
+              <span>Asset symbol</span>
+              <input type="text" name="assetSymbol" value="LBTC" />
+            </label>
+            <label>
+              <span>Sending institution</span>
+              <input type="text" name="sendingInstitution" value="Brazil Exchange" />
+            </label>
+            <label>
+              <span>Settlement institution</span>
+              <input type="text" name="settlementInstitution" value="BSOS" />
+            </label>
+            <label>
+              <span>Receiving institution</span>
+              <input type="text" name="receivingInstitution" value="Corridor Partner" />
+            </label>
+            <label>
+              <span>Purpose</span>
+              <input type="text" name="purpose" value="Cross-border trade settlement demo" />
+            </label>
+            <label class="full-width">
+              <span>Currency / settlement context</span>
+              <input type="text" name="currencyContext" value="Brazil to Asia corridor — Liquid testnet demo" />
+            </label>
+
+            <div class="button-row full-width">
+              <button type="submit" class="primary-btn">Create compliance record</button>
+              <button type="button" id="seed-demo-btn" class="ghost-btn">Load demo values</button>
+            </div>
+          </form>
+
+          <div id="create-result" class="result-box muted-box">
+            Create a record to get a compliance ID.
+          </div>
+        </section>
+
+        <section class="card">
+          <div class="section-header">
+            <h2>Send Confidential Settlement</h2>
+            <p>Use the compliance ID to trigger the settlement route.</p>
+          </div>
+
+          <form id="settlement-form" class="form-grid">
+            <label>
+              <span>Compliance record ID</span>
+              <input type="text" id="settlementComplianceId" name="complianceRecordId" placeholder="CR-2026-XXXXXXXX" required />
+            </label>
+            <label>
+              <span>Destination address (optional)</span>
+              <input type="text" id="destinationAddress" name="destinationAddress" placeholder="Leave blank to auto-generate in real mode" />
+            </label>
+            <div class="button-row full-width">
+              <button type="submit" class="primary-btn">Send settlement</button>
+            </div>
+          </form>
+
+          <div id="settlement-result" class="result-box muted-box">
+            No settlement has been sent yet.
+          </div>
+        </section>
+
+        <section class="card">
+          <div class="section-header">
+            <h2>Audit Lookup</h2>
+            <p>Search by compliance ID or Liquid transaction ID.</p>
+          </div>
+
+          <form id="audit-form" class="audit-form">
+            <input type="text" id="auditLookupValue" placeholder="CR-2026-XXXXXXXX or txid" required />
+            <button type="submit" class="primary-btn">Lookup</button>
+          </form>
+
+          <div id="audit-result" class="result-box muted-box">
+            Run a lookup to see the linked off-chain and on-chain record.
+          </div>
+        </section>
+
+        <section class="card full-span">
+          <div class="section-header row-between">
+            <div>
+              <h2>Recent Transfers</h2>
+              <p>Quick view of the latest compliance records created in the demo.</p>
+            </div>
+            <button type="button" id="refresh-transfers-btn" class="ghost-btn">Refresh</button>
+          </div>
+
+          <div id="transfers-list" class="transfer-list"></div>
+        </section>
+      </main>
+    </div>
+
+    <script src="./app.js" type="module"></script>
+  </body>
+</html>
